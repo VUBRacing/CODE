@@ -17,7 +17,6 @@ public:
 	virtual void send(Message message);
 	virtual Message read();
 
-
 };
 
 #endif

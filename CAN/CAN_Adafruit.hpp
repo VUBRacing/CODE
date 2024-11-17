@@ -54,8 +54,6 @@ public:
 
 private:
 	CANSAME5x CAN;
-
-
 };
 
 #endif
