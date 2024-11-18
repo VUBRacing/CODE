@@ -15,7 +15,7 @@
  * class for an inverter
  */
 
-class Inverter {
+class Invertor {
   public:
     /**
      * simple beginsequence for the inverter
