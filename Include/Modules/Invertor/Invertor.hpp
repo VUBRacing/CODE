@@ -69,13 +69,13 @@ class Invertor {
      * Stop the inverter
      * @param _Inverter_ID ID from inverter in CAN_ID
      */ 
-    virtual void Stop(int _Invertor_ID);
+    void Stop(int _Invertor_ID);
 
     /**
      * lock the inverter
      * @param _Inverter_ID ID from inverter in CAN_ID
      */
-    virtual void LockInverter(int _Inverter_ID){
+    void LockInverter(int _Inverter_ID){
       Message message;
       message.id = _Inverter_ID;
       message.data_field.push_back(0x51);
@@ -89,7 +89,7 @@ class Invertor {
      * clears the invertor
      * @param _Inverter_ID ID from inverter in CAN_ID
      */
-    virtual void ClearError(int _Inverter_ID){
+    void ClearError(int _Inverter_ID){
       Message message;
       message.id = _Inverter_ID;
       message.data_field.push_back(0x8E);
@@ -103,7 +103,7 @@ class Invertor {
      * Read Status, returns?
      * @param _Inverter_ID ID from inverter in CAN_ID
      */
-    virtual void ReadStatusMask(int _Inverter_ID){
+    void ReadStatusMask(int _Inverter_ID){
       Message message;
       message.id = _Inverter_ID;
       message.data_field.push_back(0x3D);
@@ -117,7 +117,7 @@ class Invertor {
      * Check for errors bit, returns?
      * @param _Inverter_ID ID from inverter in CAN_ID
      */
-    virtual void CheckErrorBit(int _Inverter_ID){
+    void CheckErrorBit(int _Inverter_ID){
       Message message;
       message.id = _Inverter_ID;
       message.data_field.push_back(0x3D);
@@ -131,7 +131,7 @@ class Invertor {
      * Checks for errors, return?
      * @param _Inverter_ID ID from inverter in CAN_ID
      */
-    virtual void CheckError(int _Inverter_ID){
+    void CheckError(int _Inverter_ID){
       Message message;
       message.id = _Inverter_ID;
       message.data_field.push_back(0x3D);
@@ -145,7 +145,7 @@ class Invertor {
      * Unlock the inverter
      * @param _Inverter_ID ID from inverter in CAN_ID
      */
-    virtual void UnlockInverter(int _Inverter_ID){
+    void UnlockInverter(int _Inverter_ID){
       Message message;
       message.id = _Inverter_ID;
       message.data_field.push_back(0x51);
@@ -158,26 +158,26 @@ class Invertor {
     /**
      * Enable the inverter
      */
-    virtual void Enable(int _Inverter_ID);
+    void Enable(int _Inverter_ID);
 
     /**
      * Set the speed of the motor
      * @param speed the speed of the motor
      */
-    virtual void SetSpeed(int _speed) = 0;
+    void SetSpeed(int _speed) = 0;
 
     /**
      * Get the speed of the motor
      * @return the speed of the motor
      */
-    virtual int GetSpeed() = 0;
+    int GetSpeed() = 0;
 
     /**
      * Set the torque of the motor
      * @param _Inverter_ID ID from inverter in CAN_ID
      * @param torque the torque of the motor
      */
-    virtual void SetTorque(int _Inverter_ID , int _torque = 0){
+    void SetTorque(int _Inverter_ID , int _torque = 0){
       Message message;
       message.id = _Inverter_ID;
       message.data_field.push_back(0x90);
@@ -191,50 +191,50 @@ class Invertor {
      * Get the torque of the motor
      * @return the torque of the motor
      */
-    virtual int GetTorque() = 0;
+    int GetTorque() = 0;
 
     /**
      * Set the status of the inverter
      * @param status the status of the inverter
      */
-    virtual void SetStatus(int _status) = 0;
+    void SetStatus(int _status) = 0;
 
     /**
      * Get the status of the inverter
      * @return the status of the inverter
      */
-    virtual int GetStatus() = 0;
+    int GetStatus() = 0;
 
     /**
      * Get the temperature of the air
      * @param airTemperature the temperature of the air
      */
-    virtual void GetAirTemperature(int _airTemperature) = 0;
+    void GetAirTemperature(int _airTemperature) = 0;
 
     /**
      * Get the temperature of the inverter
      * @return the temperature of the inverter
      */
-    virtual int GetInverterTemperature() = 0;
+    int GetInverterTemperature() = 0;
 
     /**
      * Get the temperature of the motor
      * 
      * @return the temperature of the motor
      */
-    virtual int GetMotorTemperature() = 0; 
+    int GetMotorTemperature() = 0; 
 
     /**
      * Get the voltage of the DC bus
      * @return the voltage of the DC bus
      */
-    virtual int GetVdc() = 0;
+    int GetVdc() = 0;
 
     /**
      * Get the current of the motor
      * @return the current of the motor
      */
-    virtual int GetCurrent() = 0;
+    int GetCurrent() = 0;
 
   private:
     CANAdafruit CAN;
