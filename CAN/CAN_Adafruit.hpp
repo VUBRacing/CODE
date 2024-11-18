@@ -1,8 +1,8 @@
 #ifndef CAN_ADAFRUIT
 #define CAN_ADAFRUIT
 
-#include "Arduino.h"
-#include "CANSAME5x.h"
+#include <Arduino.h>
+#include <CANSAME5x.h>
 #include "CAN_Library.hpp"
 
 class CANAdafruit : public CANLibrary {

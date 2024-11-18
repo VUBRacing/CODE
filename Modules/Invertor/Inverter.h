@@ -2,7 +2,7 @@
 #define CAN_LIBRARY
 
 #include "CAN_Adafruit"
-#include "Arduino.h"
+#include <Arduino.h>
 
 /**
  * Abstract class for an inverter
@@ -18,9 +18,9 @@ class Inverter {
       LockInverter(_Inverter_ID);
       delay(1);
 
-      UnlockInverter(_Inverter_ID);
-      delay(1);
-    }
+      UnlockInverter(_Inverter_ID); 
+      delay(1);   
+      }
     /**
      * beginsequence of the inverter 
      * @param _Inverter_ID ID from inverter in CAN_ID
