@@ -1,0 +1,12 @@
+{
+    "name": "VUBR library",
+    "version": "1.0.0",
+    "description": "custom library for VUBR",
+    "keywords": ["custom", "embedded"],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/VUBRacing/CODE.git"
+    },
+    "frameworks": "arduino",
+    "platforms": "*"
+  }
