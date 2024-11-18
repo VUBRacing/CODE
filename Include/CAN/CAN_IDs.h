@@ -18,9 +18,10 @@
 #define PRECHARGE_STATUS_ID 0x006
 
 // APPS Analog Values
-#define APPS1_AVAL_ID 0x010 // not used new version only averge is send
-#define APPS2_AVAL_ID 0x011// not used new version only averge is send
-#define APPS_AVAL_ID 0x012    
+#define APPS_AVAL_ID 0x012   
+
+// botton and switch of dashbord
+#define DASH_BOARD_INFO 0x015
 
 
 // Inverters

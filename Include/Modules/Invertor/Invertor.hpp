@@ -4,12 +4,6 @@
 #include <CAN/CAN_Adafruit.hpp>
 #include <Arduino.h>
 
-// class Invertor {
-//   public:
-//   void hello_world() {
-//     Serial.println("hello world");
-//   }
-// };
 
 /**
  * class for an inverter
