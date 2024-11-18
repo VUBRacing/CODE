@@ -69,7 +69,7 @@ class Invertor {
      * Stop the inverter
      * @param _Inverter_ID ID from inverter in CAN_ID
      */ 
-    void Stop(int _Invertor_ID);
+    // void Stop(int _Invertor_ID);
 
     /**
      * lock the inverter
@@ -158,19 +158,19 @@ class Invertor {
     /**
      * Enable the inverter
      */
-    void Enable(int _Inverter_ID);
+    //void Enable(int _Inverter_ID);
 
     /**
      * Set the speed of the motor
      * @param speed the speed of the motor
      */
-    void SetSpeed(int _speed) = 0;
+    //void SetSpeed(int _speed) = 0;
 
     /**
      * Get the speed of the motor
      * @return the speed of the motor
      */
-    int GetSpeed() = 0;
+    //int GetSpeed() = 0;
 
     /**
      * Set the torque of the motor
@@ -191,50 +191,50 @@ class Invertor {
      * Get the torque of the motor
      * @return the torque of the motor
      */
-    int GetTorque() = 0;
+    //int GetTorque() = 0;
 
     /**
      * Set the status of the inverter
      * @param status the status of the inverter
      */
-    void SetStatus(int _status) = 0;
+    //void SetStatus(int _status) = 0;
 
     /**
      * Get the status of the inverter
      * @return the status of the inverter
      */
-    int GetStatus() = 0;
+    //int GetStatus() = 0;
 
     /**
      * Get the temperature of the air
      * @param airTemperature the temperature of the air
      */
-    void GetAirTemperature(int _airTemperature) = 0;
+    //void GetAirTemperature(int _airTemperature) = 0;
 
     /**
      * Get the temperature of the inverter
      * @return the temperature of the inverter
      */
-    int GetInverterTemperature() = 0;
+    //int GetInverterTemperature() = 0;
 
     /**
      * Get the temperature of the motor
      * 
      * @return the temperature of the motor
      */
-    int GetMotorTemperature() = 0; 
+    //int GetMotorTemperature() = 0; 
 
     /**
      * Get the voltage of the DC bus
      * @return the voltage of the DC bus
      */
-    int GetVdc() = 0;
+    //int GetVdc() = 0;
 
     /**
      * Get the current of the motor
      * @return the current of the motor
      */
-    int GetCurrent() = 0;
+    //int GetCurrent() = 0;
 
   private:
     CANAdafruit CAN;
