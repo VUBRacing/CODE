@@ -29,7 +29,7 @@ class Invertor {
      * @param _precharge Gives if precharge is done (true)
      * Source: mail Unitek
      */
-    void BeginSequence (int _Inverter_ID, bool _precharge){
+    void BeginSequence (int _Inverter_ID, bool _precharge){ // can be 2 functions
       if (!_precharge){
         LockInverter(_Inverter_ID);
         delay(1);
