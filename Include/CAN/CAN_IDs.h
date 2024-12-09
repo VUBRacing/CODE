@@ -17,7 +17,7 @@
 // PreCharge
 #define PRECHARGE_STATUS_ID 0x006
 // Message form precharge
-#define PRECHARGE_MESSSAGE_ON 0x01
+#define PRECHARGE_MESSAGE_ON 0x01
 #define PRECHARGE_MESSAGE_OFF 0x02
 
 // APPS Analog Values
