@@ -16,6 +16,9 @@
 
 // PreCharge
 #define PRECHARGE_STATUS_ID 0x006
+// Message form precharge
+#define PRECHARGE_MESSSAGE_ON 0x01
+#define PRECHARGE_MESSAGE_OFF 0x02
 
 // APPS Analog Values
 #define APPS_AVAL_ID 0x012   
@@ -25,6 +28,7 @@
 // information transmitted
 #define DASH_BOARD_BUTTON_R2D_ON 0x01
 #define DASH_BOARD_SWITCH_R2D_ON 0x02
+#define DASH_BOARD_SWITCH_R2D_OFF 0x03
 
 
 // Inverters
