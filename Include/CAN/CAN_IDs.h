@@ -20,8 +20,11 @@
 // APPS Analog Values
 #define APPS_AVAL_ID 0x012   
 
-// botton and switch of dashbord
+// button and switch of dashbord
 #define DASH_BOARD_INFO 0x015
+// information transmitted
+#define DASH_BOARD_BUTTON_R2D_ON 0x01
+#define DASH_BOARD_SWITCH_R2D_ON 0x02
 
 
 // Inverters
