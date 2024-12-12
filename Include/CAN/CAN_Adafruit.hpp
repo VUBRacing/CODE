@@ -36,7 +36,7 @@ public:
 
 	Message read() override {
 		Message result;
-		Message not = {0, 0, {0}};
+		Message not = {0, 1, {0}};
 		result.packet_size = CAN.parsePacket();
 
 		if (!result.packet_size) {
