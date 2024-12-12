@@ -36,10 +36,11 @@ public:
 
 	Message read() override {
 		Message result;
+		Message not = {0, 0, {0}};
 		result.packet_size = CAN.parsePacket();
 
 		if (!result.packet_size) {
-			return result;
+			return not;
 		}
 
 		result.id = CAN.packetId();
