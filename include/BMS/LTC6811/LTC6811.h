@@ -1,1 +1,0 @@
-external_libraries/Linduino/LTSketchbook/libraries/LTC6811/LTC6811.h

@@ -1,3 +1,0 @@
-[submodule "external_libraries/Linduino"]
-	path = external_libraries/Linduino
-	url = https://github.com/analogdevicesinc/Linduino.git
