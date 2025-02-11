@@ -11,10 +11,14 @@
 class Invertor
 {
 public:
+  /**
+   * setup needed for the invertor
+   * @param mycan pointer to main can
+   */
   void setup(CANAdafruit *mycan){
     CAN = *mycan;
   }
-  
+
   /**
    * simple beginsequence for the inverter
    * @param _Inverter_ID ID from inverter in CAN_ID
