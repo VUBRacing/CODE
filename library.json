@@ -13,6 +13,13 @@
 	"SPI": "*"
     },
     "build": {
-        srcFilter = "+<include/> -<external_libraries/Linduino/> +<external_libraries/Linduino/LTSketchbook/libraries/Linduino/> +<external_libraries/Linduino/LTSketchbook/libraries/LT_SPI/> +<external_libraries/Linduino/LTSketchbook/libraries/LTC681x/> +<external_libraries/Linduino/LTSketchbook/libraries/LTC6811/>"
+        "srcFilter": [
+            "+<include/>",
+            "-<external_libraries/Linduino/>",
+            "+<external_libraries/Linduino/LTSketchbook/libraries/Linduino/>",
+            "+<external_libraries/Linduino/LTSketchbook/libraries/LT_SPI/>",
+            "+<external_libraries/Linduino/LTSketchbook/libraries/LTC681x/>",
+            "+<external_libraries/Linduino/LTSketchbook/libraries/LTC6811/>"
+        ]
     }
 }
