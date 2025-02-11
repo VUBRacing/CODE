@@ -8,5 +8,8 @@
       "url": "https://github.com/VUBRacing/CODE.git"
     },
     "frameworks": "arduino",
-    "platforms": "*"
+    "platforms": "*",
+    "build": {
+        "srcFilter": "+<include/> -<external_libraries/>"
+    }
   }
