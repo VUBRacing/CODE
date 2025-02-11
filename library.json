@@ -10,6 +10,6 @@
     "frameworks": "arduino",
     "platforms": "*",
     "build": {
-        "srcFilter": "+<include/> -<external_libraries/> +<external_libraries/Linduino/LTSketchbook/libraries/LTC6811/> +<external_libraries/Linduino/LTSketchbook/libraries/LTC681x/"
+        "srcFilter": "+<include/> -<include/BMS/> -<external_libraries/> +<external_libraries/Linduino/LTSketchbook/libraries/LTC681x/> +<external_libraries/Linduino/LTSketchbook/libraries/LTC6811/"
     }
   }
