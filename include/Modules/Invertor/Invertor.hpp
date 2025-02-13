@@ -2,6 +2,7 @@
 #define INVERTER_LIBRARY
 
 #include <CAN/CAN_Adafruit.hpp>
+#include <include/Modules/Invertor/Invertor_ID.hpp>
 #include <Arduino.h>
 
 /**
@@ -17,6 +18,12 @@ public:
    */
   void setup(CANAdafruit *mycan){
     CAN = *mycan;
+  }
+
+  void Beginrequest(int _Invertor_ID, int time_interval){
+    Cyclic_transmitting_request(_Invertor_ID,RegID_NominalMotorVoltage,time_interval );
+    Cyclic_transmitting_request(_Invertor_ID,RegID_DCVoltage,time_interval );
+    Cyclic_transmitting_request(_Invertor_ID,RegID_ActualCurrent,time_interval );
   }
 
   /**
