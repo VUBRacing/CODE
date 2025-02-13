@@ -2,6 +2,7 @@
 #define INVERTER_LIBRARY
 
 #include <CAN/CAN_Adafruit.hpp>
+#include <include/Modules/Invertor/Invertor_ID.hpp>
 #include <Arduino.h>
 
 /**
@@ -12,8 +13,23 @@ class Invertor
 {
 public:
   /**
+   * setup needed for the invertor
+   * @param mycan pointer to main can
+   */
+  void setup(CANAdafruit *mycan){
+    CAN = *mycan;
+  }
+
+  void Beginrequest(int _Invertor_ID, int time_interval){
+    Cyclic_transmitting_request(_Invertor_ID,RegID_NominalMotorVoltage,time_interval );
+    Cyclic_transmitting_request(_Invertor_ID,RegID_DCVoltage,time_interval );
+    Cyclic_transmitting_request(_Invertor_ID,RegID_ActualCurrent,time_interval );
+  }
+
+  /**
    * simple beginsequence for the inverter
    * @param _Inverter_ID ID from inverter in CAN_ID
+   * geeft geen respons van de invertor
    * Source: mail Unitek
    */
   void SimpleBeginSequence(int _Inverter_ID)
@@ -29,10 +45,12 @@ public:
    * beginsequence of the inverter before the precharge is done
    * @param _Inverter_ID ID from inverter in CAN_ID
    *
+   * Invertor antwoord op statusmask met
+   * 
    * Source: mail Unitek
    */
   void BeginSequence_beforeprecharge(int _Inverter_ID)
-  { // can be 2 functions
+  { 
     LockInverter(_Inverter_ID);
     delay(1);
 
@@ -70,14 +88,20 @@ public:
    * Stop the inverter
    * @param _Inverter_ID ID from inverter in CAN_ID
    */
-  // void Stop(int _Invertor_ID);
+  void Stop(int _Inverter_ID){
+    Message message;
+    message.id = _Inverter_ID;
+    message.data_field.push_back(0x51);
+    message.data_field.push_back(0x04);
+    message.data_field.push_back(0x00);
+  }
 
   /**
    * lock the inverter
    * @param _Inverter_ID ID from inverter in CAN_ID
+   * No CAN respons from the invertor
    */
-  void
-  LockInverter(int _Inverter_ID)
+  void LockInverter(int _Inverter_ID)
   {
     Message message;
     message.id = _Inverter_ID;
@@ -91,6 +115,7 @@ public:
   /**
    * clears the invertor
    * @param _Inverter_ID ID from inverter in CAN_ID
+   * No CAN respons from the invertor
    */
   void ClearError(int _Inverter_ID)
   {
@@ -104,7 +129,8 @@ public:
   }
 
   /**
-   * Read Status, returns?
+   * Read Status
+   * Geeft een waarde terug waarschijnelijk over de status in de invertor
    * @param _Inverter_ID ID from inverter in CAN_ID
    */
   void ReadStatusMask(int _Inverter_ID)
@@ -119,7 +145,11 @@ public:
   }
 
   /**
-   * Check for errors bit, returns?
+   * Check for errors bit
+   * Invertor antwoord met de bit error
+   *    error :
+   *    No error :
+   * 
    * @param _Inverter_ID ID from inverter in CAN_ID
    */
   void CheckErrorBit(int _Inverter_ID)
@@ -134,7 +164,10 @@ public:
   }
 
   /**
-   * Checks for errors, return?
+   * Checks for errors
+   * Answer of the invertor
+   *  Error :
+   *  No error : 
    * @param _Inverter_ID ID from inverter in CAN_ID
    */
   void CheckError(int _Inverter_ID)
@@ -151,6 +184,7 @@ public:
   /**
    * Unlock the inverter
    * @param _Inverter_ID ID from inverter in CAN_ID
+   * No CAN respons of the invertor
    */
   void UnlockInverter(int _Inverter_ID)
   {
@@ -163,27 +197,12 @@ public:
     CAN.send(message);
   }
 
-  /**
-   * Enable the inverter
-   */
-  // void Enable(int _Inverter_ID);
-
-  /**
-   * Set the speed of the motor
-   * @param speed the speed of the motor
-   */
-  // void SetSpeed(int _speed) = 0;
-
-  /**
-   * Get the speed of the motor
-   * @return the speed of the motor
-   */
-  // int GetSpeed() = 0;
 
   /**
    * Set the torque of the motor
    * @param _Inverter_ID ID from inverter in CAN_ID
    * @param torque the torque of the motor
+   * No answer of the invertor
    */
   void SetTorque(int _Inverter_ID, int _torque = 0)
   {
@@ -197,55 +216,77 @@ public:
   }
 
   /**
-   * Get the torque of the motor
-   * @return the torque of the motor
+   * Transmitting request Sending once
+   *@param _Inverter_ID ID from inverter in CAN_ID
+   *@param regID regbit to send, see CAN manual
+   * CAN respons of the needed regValue
    */
-  // int GetTorque() = 0;
+  void Transmitting_request(int _Inverter_ID, int regID){
+    Message message;
+    message.id = _Inverter_ID;
+    message.data_field.push_back(0x3D);
+    message.data_field.push_back(regID);
+    message.data_field.push_back(0x00);
+  }
 
   /**
-   * Set the status of the inverter
-   * @param status the status of the inverter
+   * Cycic Transmitting request
+   *@param _Inverter_ID ID from inverter in CAN_ID
+   *@param regID regbit to send, see CAN manual
+   *@param time_interval 0-254ms time interval for transmittion
+   *cyclic CAN respons of needed regValue
    */
-  // void SetStatus(int _status) = 0;
+  void Cyclic_transmitting_request(int _Inverter_ID, int regID, int time_interval){
+    Message message;
+    message.id = _Inverter_ID;
+    message.data_field.push_back(0x3D);
+    message.data_field.push_back(regID);
+    message.data_field.push_back(time_interval);
+  }
+
+    /**
+   * Stop Cycic Transmitting request
+   *@param _Inverter_ID ID from inverter in CAN_ID
+   *No CAN respons from the inverter
+   */
+  void Stop_transmitting(int _Inverter_ID){
+    Message message;
+    message.id = _Inverter_ID;
+    message.data_field.push_back(0x3D);
+    message.data_field.push_back(0x00);
+    message.data_field.push_back(0xff);
+  }
 
   /**
-   * Get the status of the inverter
-   * @return the status of the inverter
+   * Changes the transmitting adress
+   * @param _Inverter_ID previous adress
+   * @param adress New adress
+   * No CAN respons from the inverter
+   * (pls do not use)
    */
-  // int GetStatus() = 0;
+  void Change_transmitting_address(int _Inverter_ID, int adress){
+    Message message;
+    message.id = _Inverter_ID;
+    message.data_field.push_back(0x68);
+    message.data_field.push_back(adress);
+  }
 
-  /**
-   * Get the temperature of the air
-   * @param airTemperature the temperature of the air
-   */
-  // void GetAirTemperature(int _airTemperature) = 0;
+  void SetSpeed(int _Inverter_ID, int speed){
+    Message message;
+    message.id = _Inverter_ID;
+    message.data_field.push_back(0x31);
+    message.data_field.push_back(speed & 0xFF);
+    message.data_field.push_back((speed >>= 8) & 0xFF);
+  }
 
-  /**
-   * Get the temperature of the inverter
-   * @return the temperature of the inverter
-   */
-  // int GetInverterTemperature() = 0;
-
-  /**
-   * Get the temperature of the motor
-   *
-   * @return the temperature of the motor
-   */
-  // int GetMotorTemperature() = 0;
-
-  /**
-   * Get the voltage of the DC bus
-   * @return the voltage of the DC bus
-   */
-  // int GetVdc() = 0;
-
-  /**
-   * Get the current of the motor
-   * @return the current of the motor
-   */
-  // int GetCurrent() = 0;
 
 private:
+  enum return_invertor
+  {
+
+
+  };
+
   CANAdafruit CAN;
   int m_speed;               // speed of the motor
   int m_torque;              // torque of the motor
@@ -255,6 +296,7 @@ private:
   int m_motorTemperature;    // In degrees Celsius, the temperature of the motor
   int m_Vdc;                 // Volts, the voltage of the DC bus
   int m_current;             // Amps, the current of the motor
+
 };
 
 #endif

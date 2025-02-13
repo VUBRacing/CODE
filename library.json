@@ -1,5 +1,5 @@
 {
-    "name": "VUBR library",
+    "name": "VUBRacing_Library",
     "version": "1.0.0",
     "description": "custom library for VUBR",
     "keywords": ["custom", "embedded"],
@@ -8,5 +8,18 @@
       "url": "https://github.com/VUBRacing/CODE.git"
     },
     "frameworks": "arduino",
-    "platforms": "*"
-  }
+    "platforms": "*",
+    "dependencies": {
+	"SPI": "*"
+    },
+    "build": {
+        "srcFilter": [
+            "+<include/>",
+            "-<external_libraries/Linduino/>",
+            "+<external_libraries/Linduino/LTSketchbook/libraries/Linduino/>",
+            "+<external_libraries/Linduino/LTSketchbook/libraries/LT_SPI/>",
+            "+<external_libraries/Linduino/LTSketchbook/libraries/LTC681x/>",
+            "+<external_libraries/Linduino/LTSketchbook/libraries/LTC6811/>"
+        ]
+    }
+}
