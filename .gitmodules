@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+[submodule "external_libs/Linduino"]
+	branch = main
+=======
 [submodule "external_libraries/Linduino"]
 	path = external_libraries/Linduino
 	url = https://github.com/analogdevicesinc/Linduino.git
+>>>>>>> 380be6e4dae413cefb6a5f14df43efd727118223
