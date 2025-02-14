@@ -94,6 +94,8 @@ public:
     message.data_field.push_back(0x51);
     message.data_field.push_back(0x04);
     message.data_field.push_back(0x00);
+
+    CAN.send(message);
   }
 
   /**
@@ -227,6 +229,8 @@ public:
     message.data_field.push_back(0x3D);
     message.data_field.push_back(regID);
     message.data_field.push_back(0x00);
+
+    CAN.send(message);
   }
 
   /**
@@ -242,6 +246,8 @@ public:
     message.data_field.push_back(0x3D);
     message.data_field.push_back(regID);
     message.data_field.push_back(time_interval);
+
+    CAN.send(message);
   }
 
     /**
@@ -255,6 +261,8 @@ public:
     message.data_field.push_back(0x3D);
     message.data_field.push_back(0x00);
     message.data_field.push_back(0xff);
+
+    CAN.send(message);
   }
 
   /**
@@ -269,6 +277,8 @@ public:
     message.id = _Inverter_ID;
     message.data_field.push_back(0x68);
     message.data_field.push_back(adress);
+
+    CAN.send(message);
   }
 
   void SetSpeed(int _Inverter_ID, int speed){
@@ -277,15 +287,12 @@ public:
     message.data_field.push_back(0x31);
     message.data_field.push_back(speed & 0xFF);
     message.data_field.push_back((speed >>= 8) & 0xFF);
+
+    CAN.send(message);
   }
 
 
 private:
-  enum return_invertor
-  {
-
-
-  };
 
   CANAdafruit CAN;
   int m_speed;               // speed of the motor
