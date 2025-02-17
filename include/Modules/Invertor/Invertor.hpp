@@ -266,6 +266,22 @@ public:
   }
 
   /**
+   * From the special function document of edward from unitek
+   * Send the recommend value in a CAN messages
+   * See pg 27, section 4.10 
+   * 
+   */
+
+  void Auto_CANmessages(int _Inverter_ID ){
+    Message message;
+    message.id = _Inverter_ID;
+    message.data_field.push_back(0xDC);
+    message.data_field.push_back(0x01);
+    
+    CAN.send(message);
+  }
+
+  /**
    * Changes the transmitting adress
    * @param _Inverter_ID previous adress
    * @param adress New adress
