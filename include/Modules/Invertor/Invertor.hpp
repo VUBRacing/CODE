@@ -275,9 +275,9 @@ public:
   void Auto_CANmessages(int _Inverter_ID ){
     Message message;
     message.id = _Inverter_ID;
-    message.data_field.push_back(0xDC);
+    message.data_field.push_back(0x3D);
     message.data_field.push_back(0x01);
-    
+
     CAN.send(message);
   }
 
