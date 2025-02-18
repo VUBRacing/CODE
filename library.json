@@ -20,7 +20,9 @@
             "+<external_libraries/Linduino/LTSketchbook/libraries/LT_SPI/>",
             "+<external_libraries/Linduino/LTSketchbook/libraries/LTC681x/>",
             "+<external_libraries/Linduino/LTSketchbook/libraries/LTC6811/>",
-	    "+<external_libraries/Linduino/LTSketchbook/libraries/UserInterface/>"
+	    "+<external_libraries/Linduino/LTSketchbook/libraries/UserInterface/>",
+	    "+<external_libraries/Linduino/LTSketchbook/libraries/LT_I2C/>",
+	    "+<external_libraries/Linduino/LTSketchbook/libraries/QuickEval_EEPROM/>"
         ]
     }
 }
