@@ -62,6 +62,16 @@ public:
   }
 
   /**
+   * Checks if the beginsequence 
+   */
+
+  bool Beginsequence_beforeprechargeCHECK(Message message, int _Invertor_RX_ID){
+    if(message.id != _Invertor_RX_ID) return false;
+    if (message.data_field[0] != ) return false;
+    return true; 
+  }
+
+  /**
    * beginsequence of the invertor after the precharge is done
    * @param _Inverter_ID ID from inverter in CAN_ID
    *
