@@ -68,6 +68,7 @@ public:
   bool Beginsequence_beforeprechargeCHECK(Message message, int _Invertor_RX_ID){
     if(message.id != _Invertor_RX_ID) return false;
     if (message.data_field[0] != 1 ) return false;
+    if (message.data_field[1] != 1) return false;
     return true; 
   }
 
@@ -92,6 +93,13 @@ public:
 
     ReadStatusMask(_Inverter_ID);
     delay(1);
+  }
+
+  bool Beginsequence_afterprechargeCHECK(Message message, int _Invertor_RX_ID){
+    if(message.id != _Invertor_RX_ID) return false;
+    if (message.data_field[0] != 1 ) return false;
+    if (message.data_field[1] != 1) return false;
+    return true; 
   }
 
   /**
